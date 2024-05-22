@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -45,13 +46,13 @@ func saveToFile(d deck,fileName string) bool{
   return true
 }
 
-func readFromFile(fileName string) string{
+func readFromFile(fileName string) (string,error){
 	deckArr , err :=  os.ReadFile(fileName)
 
 	if err!=nil{
 	  log.Fatal("Unable to read from file ",err)
-	  return ""
+	  return "",errors.New("Unable to read file")
 	}
 	  deckStr := string(deckArr)
-	  return deckStr
+	  return deckStr,nil
   }

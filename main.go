@@ -9,7 +9,7 @@ func main() {
     success := saveToFile(card,"my_file")
 
 	if success {
-		result := readFromFile("my_file")
+		result,_ := readFromFile("my_file")
 		fmt.Printf("Response from file %v",result)
 	}
 }
