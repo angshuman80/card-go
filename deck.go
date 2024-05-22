@@ -1,6 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"os"
+	"strings"
+)
 
 type deck []string
 
@@ -25,3 +30,28 @@ func (d deck) print() {
 		fmt.Println(card)
 	}
 }
+
+func (d deck) toString() string{
+	return strings.Join(d,",")
+}
+
+func saveToFile(d deck,fileName string) bool{
+  err :=  os.WriteFile(fileName,[] byte (d.toString()),0666)
+
+  if err!=nil{
+	log.Fatal("Unable to write to file ",err)
+	return false
+  }
+  return true
+}
+
+func readFromFile(fileName string) string{
+	deckArr , err :=  os.ReadFile(fileName)
+
+	if err!=nil{
+	  log.Fatal("Unable to read from file ",err)
+	  return ""
+	}
+	  deckStr := string(deckArr)
+	  return deckStr
+  }
