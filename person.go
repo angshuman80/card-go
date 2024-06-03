@@ -3,10 +3,16 @@ package main
 type person struct{
 	firstName string
 	lastName string
+	address address
+}
+
+type address struct{
+	addressLine string
+	zipcode string
 }
 
 func populatePerson() person{
-	p := person{firstName: "Ang",lastName: "Bhatt"}
+	p := person{firstName: "Ang",lastName: "Bhatt",address: address{addressLine: "848 parkland place",zipcode: "23059"}}
 	return p
 
 }
